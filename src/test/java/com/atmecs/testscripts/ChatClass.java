@@ -1,16 +1,12 @@
 package com.atmecs.testscripts;
 
-import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
+
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.atmecs.browser.SetUp;
@@ -18,9 +14,6 @@ import com.atmecs.constant.ConstantClass;
 import com.atmecs.helper.HelperClass;
 import com.atmecs.reader.PropertyReader;
 import com.atmecs.testdata.DataProviderClass;
-import com.atmecs.testdata.XlsReader;
-
-import sun.awt.SunHints.Value;
 
 public class ChatClass extends SetUp {
 

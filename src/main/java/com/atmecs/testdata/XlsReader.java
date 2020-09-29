@@ -4,9 +4,6 @@ import java.io.IOException;
 
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.testng.annotations.Test;
-
-import com.atmecs.constant.ConstantClass;
 
 public class XlsReader {
 
