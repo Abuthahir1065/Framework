@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.atmecs.testscripts.ChatClass">
+      <class name="com.atmecs.testPackage.TestChat">
         <methods>
           <include name="closeBrowser"/>
-          <include name="startChat"/>
+          <include name="chatBox"/>
           <include name="declaration"/>
         </methods>
-      </class> <!-- com.atmecs.testscripts.ChatClass -->
+      </class> <!-- com.atmecs.testPackage.TestChat -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

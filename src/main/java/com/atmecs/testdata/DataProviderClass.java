@@ -12,7 +12,7 @@ public class DataProviderClass {
    public static Object[][] getData() throws IOException
    {
 		XlsReader xls=new XlsReader(ConstantClass.TESTDATA_PATH);
-		Object[][] data=xls.readData("DataSheet");
+		Object[][] data=xls.readExcelData("DataSheet");
 		return data;
 		
    }

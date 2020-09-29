@@ -12,32 +12,26 @@ import org.testng.annotations.BeforeMethod;
 
 import com.atmecs.constant.ConstantClass;
 
-
-
-
 public class SetUp {
-	
+
 	public static WebDriver driver;
 	public static Properties properties;
+
 	@BeforeMethod
-	public void declaration() throws FileNotFoundException, IOException
-	{
-		System.setProperty("webdriver.chrome.driver",ConstantClass.CHROME_PATH);
-	     driver=new ChromeDriver();
-		
+	public void browserSetUp() throws FileNotFoundException, IOException {
+		System.setProperty("webdriver.chrome.driver", ConstantClass.CHROME_PATH);
+		driver = new ChromeDriver();
+
 		driver.get("https://phptravels.com/");
 		driver.manage().timeouts().pageLoadTimeout(1, TimeUnit.MINUTES);
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-	
+
 	}
-	
+
 	@AfterMethod
-	public void closeBrowser()
-	{
+	public void closeBrowser() {
 		driver.close();
 	}
-	
-
 
 }
