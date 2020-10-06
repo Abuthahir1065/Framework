@@ -3,11 +3,14 @@ package com.atmecs.testscripts;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.By;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.log4testng.Logger;
 
 import com.atmecs.browser.SetUp;
 import com.atmecs.constant.ConstantClass;
@@ -22,8 +25,10 @@ public class ChatClass extends SetUp {
 	@Test(dataProvider = "Data", dataProviderClass = DataProviderClass.class)
 
 	public void startChat(String name, String email, String whatsapp) throws InterruptedException {
-		locators = PropertyReader.readProperty(ConstantClass.LOCATORS_PATH);
+		Logger log = Logger.getLogger(ChatClass.class);
+		PropertyConfigurator.configure("Log4j.properties");
 
+		locators = PropertyReader.readProperty(ConstantClass.LOCATORS_PATH);
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 		driver.switchTo().frame(locators.getProperty("Frame_Id"));
@@ -37,8 +42,6 @@ public class ChatClass extends SetUp {
 
 		HelperClass.selectFromDropDown(driver, locators.getProperty("Dropdown"), locators.getProperty("value"));
 		HelperClass.jsClick(driver, locators.getProperty("StartChat"));
-
-		driver.switchTo().defaultContent();
 
 	}
 

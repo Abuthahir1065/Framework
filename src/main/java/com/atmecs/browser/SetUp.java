@@ -7,31 +7,43 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 
 import com.atmecs.constant.ConstantClass;
 
 public class SetUp {
 
-	public static WebDriver driver;
-	public static Properties properties;
+	
+	public WebDriver driver;
 
 	@BeforeMethod
-	public void browserSetUp() throws FileNotFoundException, IOException {
-		System.setProperty("webdriver.chrome.driver", ConstantClass.CHROME_PATH);
-		driver = new ChromeDriver();
+	@Parameters("browser")
 
-		driver.get("https://phptravels.com/");
-		driver.manage().timeouts().pageLoadTimeout(1, TimeUnit.MINUTES);
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		driver.manage().window().maximize();
+	public void browserSetUp(String browser) {
+		if (browser.equalsIgnoreCase("firefox")) {
+			System.setProperty("webdriver.gecko.driver", ConstantClass.GECKO_PATH);
+			driver = new FirefoxDriver();
+			driver.navigate().to("https://www.phptravels.com/");
+			driver.manage().window().maximize();
+		}
+
+		else {
+			System.setProperty("webdriver.chrome.driver", ConstantClass.CHROME_PATH);
+
+			driver = new ChromeDriver();
+			driver.navigate().to("https://www.phptravels.com/");
+			driver.manage().window().maximize();
+
+		}
 
 	}
 
 	@AfterMethod
 	public void closeBrowser() {
-		driver.close();
+		driver.quit();
 	}
-
 }
